@@ -1,10 +1,10 @@
 {
     "$schema": "https://registry.getarcane.app/schema.json",
-    "name": "My Company Templates",
-    "description": "Docker templates for internal applications",
+    "name": "Xushidev's Selfhosted Templates",
+    "description": "Docker templates for selfhosting",
     "version": "1.0.0",
-    "author": "Your Team",
-    "url": "https://github.com/yourcompany/docker-templates",
+    "author": "Xushidev",
+    "url": "https://github.com/xushidev/selfhosted_templates",
     "templates": [
         {
             "id": "internal-app",
