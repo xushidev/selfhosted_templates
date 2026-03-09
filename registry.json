@@ -1,0 +1,21 @@
+{
+    "$schema": "https://registry.getarcane.app/schema.json",
+    "name": "My Company Templates",
+    "description": "Docker templates for internal applications",
+    "version": "1.0.0",
+    "author": "Your Team",
+    "url": "https://github.com/yourcompany/docker-templates",
+    "templates": [
+        {
+            "id": "internal-app",
+            "name": "Internal Application",
+            "description": "Company application stack with database",
+            "version": "1.0.0",
+            "author": "DevOps Team",
+            "compose_url": "https://raw.githubusercontent.com/yourcompany/docker-templates/main/internal-app/docker-compose.yml",
+            "env_url": "https://raw.githubusercontent.com/yourcompany/docker-templates/main/internal-app/.env.example",
+            "documentation_url": "https://github.com/yourcompany/docker-templates/tree/main/internal-app",
+            "tags": ["internal", "webapp", "postgres"]
+        }
+    ]
+}
