@@ -7,15 +7,26 @@
     "url": "https://github.com/xushidev/selfhosted_templates",
     "templates": [
         {
-            "id": "internal-app",
-            "name": "Internal Application",
+            "id": "chibisafe",
+            "name": "Chibisafe",
+            "description": "chibisafe is a beautiful and performant vault to save all your files in the cloud.",
+            "version": "1.0.0",
+            "author": "Xushidev",
+            "compose_url": "https://raw.githubusercontent.com/xushidev/selfhosted_templates/refs/heads/main/templates/chibisafe/docker-compose.yaml",
+            "env_url": "https://raw.githubusercontent.com/xushidev/selfhosted_templates/refs/heads/main/templates/chibisafe/.env.example",
+            "documentation_url": "https://github.com/xushidev/selfhosted_templates/blob/main/templates/chibisafe/README.md",
+            "tags": ["images", "links", "archiving", "media", "file-sharing", "storage", "cloud"]
+        },
+        {
+            "id": "couchdb",
+            "name": "CouchDB",
             "description": "Company application stack with database",
             "version": "1.0.0",
-            "author": "DevOps Team",
-            "compose_url": "https://raw.githubusercontent.com/yourcompany/docker-templates/main/internal-app/docker-compose.yml",
-            "env_url": "https://raw.githubusercontent.com/yourcompany/docker-templates/main/internal-app/.env.example",
-            "documentation_url": "https://github.com/yourcompany/docker-templates/tree/main/internal-app",
-            "tags": ["internal", "webapp", "postgres"]
+            "author": "Xushidev",
+            "compose_url": "https://raw.githubusercontent.com/xushidev/selfhosted_templates/refs/heads/main/templates/couchdb/docker-compose.yaml",
+            "env_url": "https://raw.githubusercontent.com/xushidev/selfhosted_templates/refs/heads/main/templates/couchdb/.env.example",
+            "documentation_url": "https://github.com/xushidev/selfhosted_templates/blob/main/templates/couchdb/README.md",
+            "tags": ["database", "json", "storage"]
         }
     ]
 }
