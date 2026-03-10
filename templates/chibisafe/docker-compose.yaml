@@ -1,0 +1,38 @@
+services:
+  chibisafe:
+    image: chibisafe/chibisafe:latest
+    env_file: .env
+    container_name: chibisafe
+    expose:
+      - 8001
+    restart: unless-stopped
+    ports:
+      - 8001:8001
+
+  chibisafe_server:
+    image: chibisafe/chibisafe-server:latest
+    container_name: chibisafe_server
+    volumes:
+      - ./database:/app/database:rw
+      - ./uploads:/app/uploads:rw
+      - ./logs:/app/logs:rw
+    expose:
+      - 8000
+    restart: unless-stopped
+    ports:
+      - 8000:8000
+
+  caddy:
+    container_name: chibisafe_caddy
+    image: caddy:2-alpine
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - ./uploads:/app/uploads:ro
+    ports:
+      - 24424:80
+    environment:
+      - BASE_URL=":80"
+    restart: unless-stopped
+
+x-arcane:
+  icon: https://cdn.jsdelivr.net/gh/selfhst/icons@main/svg/chibisafe.svg

@@ -1,0 +1,16 @@
+services:
+  couchdb:
+    container_name: couchdb
+    env_file: .env
+    image: couchdb:latest
+    network_mode: bridge
+    ports:
+      - 5984:5984
+    restart: unless-stopped
+    user: 5984:5984
+    volumes:
+      - ./data:/opt/couchdb/data
+      - ./etc:/opt/couchdb/etc/local.d
+
+x-arcane:
+  icon: https://cdn.jsdelivr.net/gh/selfhst/icons@main/svg/couchdb.svg
