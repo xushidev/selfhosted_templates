@@ -1,0 +1,13 @@
+services:
+  flaresolverr:
+    # DockerHub mirror flaresolverr/flaresolverr:latest
+    image: ghcr.io/flaresolverr/flaresolverr:latest
+    container_name: flaresolverr
+    env_file: .env
+    ports:
+      - "8191:8191"
+    restart: unless-stopped
+    network_mode: bridge
+
+x-arcane:
+  icon: https://cdn.jsdelivr.net/gh/selfhst/icons@main/svg/flaresolverr.svg
