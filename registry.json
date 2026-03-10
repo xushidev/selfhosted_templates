@@ -38,6 +38,17 @@
             "env_url": "https://raw.githubusercontent.com/xushidev/selfhosted_templates/refs/heads/main/templates/suwayomi/.env.example",
             "documentation_url": "https://github.com/xushidev/selfhosted_templates/blob/main/templates/suwayomi/README.md",
             "tags": ["manga", "suwayomi", "tachiyomi", "reader"]
+        },
+        {
+            "id": "flaresolverr",
+            "name": "Flaresolverr",
+            "description": "FlareSolverr is a proxy server to bypass Cloudflare and DDoS-GUARD protection",
+            "version": "1.0.0",
+            "author": "Xushidev",
+            "compose_url": "https://raw.githubusercontent.com/xushidev/selfhosted_templates/refs/heads/main/templates/flaresolverr/docker-compose.yaml",
+            "env_url": "https://raw.githubusercontent.com/xushidev/selfhosted_templates/refs/heads/main/templates/flaresolverr/.env.example",
+            "documentation_url": "https://github.com/xushidev/selfhosted_templates/blob/main/templates/flaresolverr",
+            "tags": ["cloudflare", "networking", "proxy"]
         }
     ]
 }
