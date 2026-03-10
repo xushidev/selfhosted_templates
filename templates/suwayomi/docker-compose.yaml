@@ -1,0 +1,15 @@
+services:
+  suwayomi:
+    container_name: suwayomi
+    env_file: .env
+    image: ghcr.io/suwayomi/suwayomi-server:stable
+    network_mode: bridge
+    ports:
+      - 4567:4567
+    restart: unless-stopped
+    volumes:
+      - ./downloads:/home/suwayomi/.local/share/Tachidesk/downloads
+      - ./app:/home/suwayomi/.local/share/Tachidesk
+
+x-arcane:
+  icon: https://cdn.jsdelivr.net/gh/selfhst/icons@main/svg/suwayomi.svg
