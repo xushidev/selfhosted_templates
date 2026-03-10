@@ -9,7 +9,7 @@
         {
             "id": "chibisafe",
             "name": "Chibisafe",
-            "description": "chibisafe is a beautiful and performant vault to save all your files in the cloud.",
+            "description": "Chibisafe is a beautiful and performant vault to save all your files in the cloud.",
             "version": "1.0.0",
             "author": "Xushidev",
             "compose_url": "https://raw.githubusercontent.com/xushidev/selfhosted_templates/refs/heads/main/templates/chibisafe/docker-compose.yaml",
@@ -20,7 +20,7 @@
         {
             "id": "couchdb",
             "name": "CouchDB",
-            "description": "Company application stack with database",
+            "description": "CouchDB is a database that uses JSON for documents, an HTTP API, & JavaScript/declarative indexing.",
             "version": "1.0.0",
             "author": "Xushidev",
             "compose_url": "https://raw.githubusercontent.com/xushidev/selfhosted_templates/refs/heads/main/templates/couchdb/docker-compose.yaml",

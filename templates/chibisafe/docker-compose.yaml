@@ -22,6 +22,7 @@ services:
     ports:
       - 8000:8000
 
+  # Check documentation for Caddyfile template: https://github.com/xushidev/selfhosted_templates/tree/main/templates/chibisafe
   caddy:
     container_name: chibisafe_caddy
     image: caddy:2-alpine
