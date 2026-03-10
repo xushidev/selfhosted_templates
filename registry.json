@@ -27,6 +27,17 @@
             "env_url": "https://raw.githubusercontent.com/xushidev/selfhosted_templates/refs/heads/main/templates/couchdb/.env.example",
             "documentation_url": "https://github.com/xushidev/selfhosted_templates/blob/main/templates/couchdb/README.md",
             "tags": ["database", "json", "storage"]
+        },
+        {
+            "id": "suwayomi",
+            "name": "Suwayomi",
+            "description": "A free and open source manga reader server that runs extensions built for Mihon (Tachiyomi).",
+            "version": "1.0.0",
+            "author": "Xushidev",
+            "compose_url": "https://raw.githubusercontent.com/xushidev/selfhosted_templates/refs/heads/main/templates/suwayomi/docker-compose.yaml",
+            "env_url": "https://raw.githubusercontent.com/xushidev/selfhosted_templates/refs/heads/main/templates/suwayomi/.env.example",
+            "documentation_url": "https://github.com/xushidev/selfhosted_templates/blob/main/templates/suwayomi/README.md",
+            "tags": ["manga", "suwayomi", "tachiyomi", "reader"]
         }
     ]
 }
