@@ -1,0 +1,18 @@
+services:
+  forgejo:
+    container_name: forgejo
+    env_file: .env
+    hostname: forgejo
+    image: codeberg.org/forgejo/forgejo:13
+    network_mode: bridge
+    ports:
+      - 3000:3000
+      - 222:22
+    restart: always
+    volumes:
+      - ./data:/data
+      - /etc/timezone:/etc/timezone
+      - /etc/localtime:/etc/localtime
+
+x-arcane:
+  icon: https://cdn.jsdelivr.net/gh/selfhst/icons@main/svg/forgejo.svg
