@@ -15,7 +15,7 @@
             "compose_url": "https://raw.githubusercontent.com/xushidev/selfhosted_templates/refs/heads/main/templates/chibisafe/docker-compose.yaml",
             "env_url": "https://raw.githubusercontent.com/xushidev/selfhosted_templates/refs/heads/main/templates/chibisafe/.env.example",
             "documentation_url": "https://github.com/xushidev/selfhosted_templates/blob/main/templates/chibisafe/README.md",
-            "tags": ["images", "links", "archiving", "media", "file-sharing", "storage", "cloud"]
+            "tags": ["url-shortener", "archiving", "media", "file-sharing"]
         },
         {
             "id": "couchdb",
@@ -49,6 +49,17 @@
             "env_url": "https://raw.githubusercontent.com/xushidev/selfhosted_templates/refs/heads/main/templates/flaresolverr/.env.example",
             "documentation_url": "https://github.com/xushidev/selfhosted_templates/blob/main/templates/flaresolverr",
             "tags": ["cloudflare", "networking", "proxy"]
+        },
+        {
+            "id": "forgejo",
+            "name": "Forgejo",
+            "description": "Forgejo is a self-hosted lightweight software forge. Easy to install and low maintenance, it just does the job.",
+            "version": "1.0.0",
+            "author": "Xushidev",
+            "compose_url": "https://raw.githubusercontent.com/xushidev/selfhosted_templates/refs/heads/main/templates/forgejo/docker-compose.yaml",
+            "env_url": "https://raw.githubusercontent.com/xushidev/selfhosted_templates/refs/heads/main/templates/forgejo/.env.example",
+            "documentation_url": "https://github.com/xushidev/selfhosted_templates/blob/main/templates/forgejo",
+            "tags": ["forgejo", "gitea", "git"]
         }
     ]
 }
