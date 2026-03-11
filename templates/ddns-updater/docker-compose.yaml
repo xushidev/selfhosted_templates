@@ -1,0 +1,18 @@
+services:
+  ddns-updater:
+    command: touch /data/config.json
+    env_file: .env
+    image: qmcgaw/ddns-updater:v2.9.0
+    network_mode: bridge
+    ports:
+      - 8900:8000
+    restart: unless-stopped
+    volumes:
+      - ./data:/updater/data
+
+#
+# Checkout the official documentation for config: https://github.com/qdm12/ddns-updater/tree/master
+#
+
+x-arcane:
+  icon: https://cdn.jsdelivr.net/gh/selfhst/icons@main/svg/ddns-updater.svg
