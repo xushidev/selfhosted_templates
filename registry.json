@@ -60,6 +60,17 @@
             "env_url": "https://raw.githubusercontent.com/xushidev/selfhosted_templates/refs/heads/main/templates/forgejo/.env.example",
             "documentation_url": "https://github.com/xushidev/selfhosted_templates/blob/main/templates/forgejo",
             "tags": ["forgejo", "gitea", "git"]
+        },
+        {
+            "id": "ddns-updater",
+            "name": "DDNS Updater",
+            "description": "Container to update DNS records periodically with WebUI for many DNS providers.",
+            "version": "1.0.0",
+            "author": "Xushidev",
+            "compose_url": "https://raw.githubusercontent.com/xushidev/selfhosted_templates/refs/heads/main/templates/ddns-updater/docker-compose.yaml",
+            "env_url": "https://raw.githubusercontent.com/xushidev/selfhosted_templates/refs/heads/main/templates/ddns-updater/.env.example",
+            "documentation_url": "https://github.com/xushidev/selfhosted_templates/blob/main/templates/ddns-updater",
+            "tags": ["ddns", "ddns-updater", "ddns-manager"]
         }
     ]
 }
