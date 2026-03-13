@@ -2,6 +2,8 @@
 # flaresolverr, prowlarr, sonarr, 
 # radarr, recyclarr, bazarr,
 # jellyfin, jellyseerr, deluge
+
+# Documentation: https://github.com/xushidev/selfhosted_templates/blob/main/templates/stackarr
 services:
   # Flaresolverr to proxy and resolve cloudflare proxy blocking
   flaresolverr:
