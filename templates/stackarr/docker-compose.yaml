@@ -1,0 +1,151 @@
+# Media stack with: 
+# flaresolverr, prowlarr, sonarr, 
+# radarr, recyclarr, bazarr,
+# jellyfin, jellyseerr, deluge
+services:
+  # Flaresolverr to proxy and resolve cloudflare proxy blocking
+  flaresolverr:
+    image: ghcr.io/flaresolverr/flaresolverr:latest
+    container_name: flaresolverr
+    env_file: .env
+    ports:
+      - 8191:8191
+    restart: unless-stopped
+    networks: 
+      - media_network
+
+  # Prowlarr to act as torrent indexer manager
+  prowlarr:
+    image: lscr.io/linuxserver/prowlarr:latest
+    container_name: prowlarr
+    env_file: .env
+    volumes:
+      - ./config/prowlarr:/config
+    ports:
+      - 9696:9696
+    restart: unless-stopped
+    networks: 
+      - media_network
+
+  # Sonarr to manage TV series
+  sonarr:
+    image: lscr.io/linuxserver/sonarr:latest
+    container_name: sonarr
+    env_file: .env
+    volumes:
+      - ./config/sonarr:/config
+      - './media/TV Series:/tv'
+      - './media/Anime:/anime'
+      - ./downloads:/downloads #optional
+    ports:
+      - 8989:8989
+    restart: unless-stopped
+    networks: 
+      - media_network
+
+  # Radarr to manage movies
+  radarr:
+    image: lscr.io/linuxserver/radarr:latest
+    container_name: radarr
+    env_file: .env
+    volumes:
+      - ./config/radarr:/config
+      - ./media/Movies:/movies #optional
+      - ./downloads:/downloads #optional
+    ports:
+      - 7878:7878
+    restart: unless-stopped
+    networks: 
+      - media_network
+
+  # Bazarr to get subtitles
+  bazarr:
+    image: lscr.io/linuxserver/bazarr:latest
+    container_name: bazarr
+    env_file: .env
+    volumes:
+      - ./config/bazarr:/config
+      - './media/TV Series:/tv'
+      - './media/Anime:/anime'
+      - ./media/Movies:/movies 
+    ports:
+      - 6767:6767
+    restart: unless-stopped
+    networks: 
+      - media_network
+
+  # Recyclarr to sync quality profiles on Sonarr and Radarr
+  recyclarr:
+    image: ghcr.io/recyclarr/recyclarr:8
+    container_name: recyclarr
+    user: 1000:1000
+    volumes:
+      - ./config/recyclarr:/config
+    env_file: .env
+    networks: 
+      - media_network
+
+  # Jellyfin media server
+  jellyfin:
+    image: jellyfin/jellyfin
+    container_name: jellyfin
+    user: 1000:1000
+    ports:
+      - 8096:8096/tcp
+      - 7359:7359/udp
+    volumes:
+      - ./media:/media
+      - ./config/jellyfin:/config
+    restart: unless-stopped
+    env_file: .env
+    networks: 
+      - media_network
+
+  # Seerr to request media from Sonarr and Radarr
+  seerr:
+    image: ghcr.io/seerr-team/seerr:latest
+    init: true
+    container_name: seerr
+    environment:
+      - LOG_LEVEL=debug
+      - TZ=Europe/Rome
+      - PORT=5055 #optional
+    ports:
+      - 5055:5055
+    volumes:
+      - ./config/seerr:/app/config
+    healthcheck:
+      test: wget --no-verbose --tries=1 --spider http://localhost:5055/api/v1/status || exit 1
+      start_period: 20s
+      timeout: 3s
+      interval: 15s
+      retries: 3
+    restart: unless-stopped
+    networks:
+      - media_network
+
+  # Deluge as torrent downloader
+  deluge:
+    image: lscr.io/linuxserver/deluge:latest
+    container_name: deluge
+    env_file: .env
+    volumes:
+      - ./config/deluge:/config
+      - ./downloads:/downloads
+    ports:
+      - 8112:8112
+      - 6881:6881
+      - 6881:6881/udp
+      #- 58846:58846 # optional for seeding
+    restart: unless-stopped
+    networks: 
+      - media_network
+
+# Network in which all services are in.
+networks:
+  media_network:
+    name: media-network
+    driver: bridge
+
+x-arcane:
+  icon: https://cdn.jsdelivr.net/gh/selfhst/icons@main/svg/quickstack.svg
