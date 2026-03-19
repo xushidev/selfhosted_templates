@@ -10,8 +10,6 @@ Stackarr has the following services by default in it:
 - [Prowlarr](https://prowlarr.com/)
 - [Sonarr](https://sonarr.tv/)
 - [Radarr](https://radarr.video/)
-- [Recyclarr](https://recyclarr.dev/) 
-- [Bazarr](https://www.bazarr.media/)
 - [Jellyfin](https://jellyfin.org/)
 - [Seerr](https://docs.seerr.dev/)
 - [Deluge](https://deluge-torrent.org/)
@@ -31,8 +29,6 @@ stackarr
 │   ├── prowlarr
 │   ├── sonarr
 │   ├── radarr
-│   ├── bazarr
-│   ├── recyclarr
 │   ├── jellyfin
 │   ├── seerr
 │   └── deluge

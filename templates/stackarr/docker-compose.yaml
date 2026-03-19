@@ -60,22 +60,6 @@ services:
     networks: 
       - media_network
 
-  # Bazarr to get subtitles
-  bazarr:
-    image: lscr.io/linuxserver/bazarr:latest
-    container_name: bazarr
-    env_file: .env
-    volumes:
-      - ./config/bazarr:/config
-      - './media/TV Series:/tv'
-      - './media/Anime:/anime'
-      - ./media/Movies:/movies 
-    ports:
-      - 6767:6767
-    restart: unless-stopped
-    networks: 
-      - media_network
-
   # Jellyfin media server
   jellyfin:
     image: jellyfin/jellyfin
