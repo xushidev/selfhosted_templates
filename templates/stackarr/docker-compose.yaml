@@ -76,17 +76,6 @@ services:
     networks: 
       - media_network
 
-  # Recyclarr to sync quality profiles on Sonarr and Radarr
-  recyclarr:
-    image: ghcr.io/recyclarr/recyclarr:8
-    container_name: recyclarr
-    user: 1000:1000
-    volumes:
-      - ./config/recyclarr:/config
-    env_file: .env
-    networks: 
-      - media_network
-
   # Jellyfin media server
   jellyfin:
     image: jellyfin/jellyfin
@@ -138,8 +127,27 @@ services:
       - 8112:8112
       - 6881:6881
       - 6881:6881/udp
-      #- 58846:58846 # optional for seeding
+      #- 58846:58846 # optional 
     restart: unless-stopped
+    networks: 
+      - media_network
+  
+  # Cleanuparr to downloads and torrents
+  cleanuparr:
+    image: ghcr.io/cleanuparr/cleanuparr:latest
+    container_name: cleanuparr
+    restart: unless-stopped
+    ports:
+      - "11011:11011"
+    volumes:
+      - /DATA/AppData/stackarr/cleanuparr:/config
+    environment:
+      - PORT=11011
+      - BASE_PATH=
+      - PUID=1000
+      - PGID=1000
+      - UMASK=022
+      - TZ=Etc/UTC
     networks: 
       - media_network
 

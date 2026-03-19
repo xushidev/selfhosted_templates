@@ -76,7 +76,7 @@
             "id": "stackarr",
             "name": "Stackarr",
             "description": "A custom template where everything you may need for a media server is included.",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "author": "Xushidev",
             "compose_url": "https://raw.githubusercontent.com/xushidev/selfhosted_templates/main/templates/stackarr/docker-compose.yaml",
             "env_url": "https://raw.githubusercontent.com/xushidev/selfhosted_templates/main/templates/stackarr/.env.example",
