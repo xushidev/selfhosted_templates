@@ -64,6 +64,8 @@ Flaresolverr isn't configured as it doesn't really need configuration.
 
 ### Deluge
 
+Deluge is a lightweight BitTorrent client. The main tool for which you will use to download stuff from the internet.
+
 You can access Deluge by browsing to http://your.server.ip:8112 on your browser.
 You will be prompted for a password, like below:
 
