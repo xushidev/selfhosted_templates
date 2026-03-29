@@ -62,7 +62,11 @@ Flaresolverr isn't configured as it doesn't really need configuration.
 - [Seerr](#seerr)
 - [Cleanuparr](#cleanuparr)
 
+---
+
 ### Deluge
+
+**[`^        back to summary        ^`](#summary)**
 
 Deluge is a lightweight BitTorrent client. The main tool for which you will use to download stuff from the internet.
 
@@ -88,7 +92,11 @@ Once you rebuild the container you should see the plugins available, simply chec
 
 <img src="../../assets/deluge-plugins.png" width=50% height=50% alt="deluge plugin manager checked">
 
+---
+
 ### Sonarr
+
+**[`^        back to summary        ^`](#summary)**
 
 Sonarr is an automated media manager, it can automatically connect to your download client (Deluge in this case), and manage all your downloaded files.
 It can automatically move / copy downloaded content to other folders.
@@ -123,7 +131,11 @@ With that Sonarr is configured, for the indexers they will automatically be adde
 
 NOTE: for convenience go to Settings > General > Security and copy the API Key, keep it somewhere safe. We will need it later on when we setup prowlarr and cleanuparr. 
 
+---
+
 ### Radarr
+
+**[`^        back to summary        ^`](#summary)**
 
 Radarr's configuration will work the exact same as [Sonarr's](#sonarr), except that you can access Radarr's webui through http://your.server.ip:7878 instead of port 8989.
 
@@ -131,7 +143,11 @@ You will also need to add the `/movies` folder instead of `/tv` and `/anime` in 
 
 Same note as Sonarr, please copy the API Key and keep it somewhere safe.
 
+---
+
 ### Prowlarr
+
+**[`^        back to summary        ^`](#summary)**
 
 Prowlarr is your torrent indexer tracker. It automatically adds the indexers to Radarr and Sonarr when you add it on Prowlarr.
 
@@ -165,7 +181,11 @@ You can add any tag that you like for it, but `flaresolverr` is my go to:
 Now you can go under Indexers and add any indexer you want, it will automatically be added to Sonarr and Radarr.
 If you can't add an indexer try to add the FlareSolverr tag to the indexer so that it passes by FlareSolver to bypass Cloudflare's protection.
 
+---
+
 ### Jellyfin
+
+**[`^        back to summary        ^`](#summary)**
 
 For Jellyfin's configuration (you can access the setup wizard at http://your.server.ip:8096) you can follow the official guide:
 
@@ -173,7 +193,11 @@ https://jellyfin.org/docs/general/post-install/setup-wizard/
 
 Just add the `/media/TV Series`, `/media/Anime`, `/media/Movies` folders for the media library, with the appropriate content types of course (Shows for TV Series and Anime, Movie for Movies)
 
+---
+
 ### Seerr
+
+**[`^        back to summary        ^`](#summary)**
 
 Seerr will be the main site where you choose the movie you want to download and add to your Jellyfin server.
 You can access your Seerr instance at http://your.server.ip:5055 and you will be greeted with the first login screen.
@@ -190,7 +214,11 @@ Just use `sonarr` and `radarr` for when you need to add your Sonarr and Radarr i
 
 Once you have finished the setup, you will be able to use Seerr to request any movie or anime or tv serie you can find on there and send it to Sonarr or Radarr for request.
 
+---
+
 ### Cleanuparr
+
+**[`^        back to summary        ^`](#summary)**
 
 Cleanuparr is optional, but an important set for my *arr stack, as it automatically cleans off the download folder and doesn't let it bloat with all the copied files from Sonarr and Radarr.
 
