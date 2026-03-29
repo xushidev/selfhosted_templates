@@ -56,7 +56,7 @@ Flaresolverr isn't configured as it doesn't really need configuration.
 
 - [Deluge](#deluge)
 - [Prowlarr]()
-- [Sonarr]()
+- [Sonarr](#sonarr)
 - [Radarr]()
 - [Jellyfin]()
 - [Seerr]()
@@ -87,3 +87,36 @@ You can do so by modifying the docker compose and instead of using `deluge:lates
 Once you rebuild the container you should see the plugins available, simply check the `Label` plugin like below:
 
 <img src="../../assets/deluge-plugins.png" width=50% height=50% alt="deluge plugin manager checked">
+
+### Sonarr
+
+Sonarr is an automated media manager, it can automatically connect to your download client (Deluge in this case), and manage all your downloaded files.
+It can automatically move / copy downloaded content to other folders.
+
+We will be using Sonarr to manage the TV series that we download with Deluge, and moving it into a folder that Jellyfin can see and stream from.
+You can also use the download folder directly for Jellyfin, but then it won't be organised into subfolder structures.
+
+On the first login into Sonarr (at http://your.server.ip:8989), you will meet an Authentication Required prompt like below:
+
+<img src="../../assets/sonarr-first-login.png" width=50% height=50% alt="sonarr's first login">
+
+Enable the authentication method to `Forms (Login Page)`, and add a username and password (you can change this in Settings > General > Security).
+Next, you will need to add the other services.
+
+First of all, for the folder management, go to Settings > Media Management.
+You will have to add the root folders (the folders where Sonarr will place all the downloaded media).
+In the docker compose we mounted the TV series under `/tv` and Animes under `/anime`, so we can add those two to the root folders.
+
+<img src="../../assets/sonarr-root-folders.png" width=50% height=50% alt="sonarr's root folders">
+
+The next part is adding our download client, which is Deluge in this case.
+Go to Settings > Download Clients and click the `+` symbol, you will be prompted to choose a download client.
+
+Choose the Deluge option under Torrents.
+You will be prompted to enter the details for the details to connect to deluge
+
+![sonarr's configuration with deluge](../../assets/sonarr-deluge-configuration.png)
+
+You can leave most of it as it is, except for the `host` section, you need to change that to `deluge`, as that is the hostname we choosed for in the docker compose (also make sure that sonarr and deluge are in the same network).
+
+With that Sonarr is configured, for the indexers they will automatically be added by prowlarr.

@@ -38,7 +38,7 @@ services:
       - ./config/sonarr:/config
       - './media/TV Series:/tv'
       - './media/Anime:/anime'
-      - ./downloads:/downloads #optional
+      - ./downloads:/downloads 
     ports:
       - 8989:8989
     restart: unless-stopped
@@ -52,8 +52,8 @@ services:
     env_file: .env
     volumes:
       - ./config/radarr:/config
-      - ./media/Movies:/movies #optional
-      - ./downloads:/downloads #optional
+      - ./media/Movies:/movies 
+      - ./downloads:/downloads 
     ports:
       - 7878:7878
     restart: unless-stopped
