@@ -60,7 +60,7 @@ Flaresolverr isn't configured as it doesn't really need configuration.
 - [Prowlarr](#prowlarr)
 - [Jellyfin](#jellyfin)
 - [Seerr](#seerr)
-- [Cleanuparr]()
+- [Cleanuparr](#cleanuparr)
 
 ### Deluge
 
@@ -189,3 +189,34 @@ Just use `sonarr` and `radarr` for when you need to add your Sonarr and Radarr i
 ![seer's example with radarr](../../assets/seerr-radarr-example.png)
 
 Once you have finished the setup, you will be able to use Seerr to request any movie or anime or tv serie you can find on there and send it to Sonarr or Radarr for request.
+
+### Cleanuparr
+
+Cleanuparr is optional, but an important set for my *arr stack, as it automatically cleans off the download folder and doesn't let it bloat with all the copied files from Sonarr and Radarr.
+
+For example you can setup a few rules so that it removes downloads that are stalled or slow from Deluge, you can also give it a rule so it seeds the downloads for only a set number of time and then remove the downloaded file from the download folder.
+
+When you first log into Cleanuparr (at http://your.server.ip:11011) you will be greeted with an initial setup request,
+Enter your credentials as you wish.
+
+We don't have a plex account since we are using Jellyfin, so we can skip the Plex setup.
+Next you can sign into the instance with the credentials you gave earlier.
+
+You will see a dashboard as follow:
+
+<img src="../../assets/cleanuparr-home.png" width=50% height=50% alt="cleanuparr's home screen">
+
+The first few things to do is to setup the media apps.
+Add an instance to Sonarr and Radarr with `sonarr` and `radarr` as URL's hostname instead of `localhost` (you can leave the external URL empty if you like) along with their respective API Keys.
+
+This will connect Cleanuparr to Sonarr and Radarr.
+Next you need to add the download client, use Deluge as client type and use `http://deluge:8112` as the URL for this setup (instead of `localhost`).
+
+This will connect Cleanuparr to the download client so that it can remove torrents that aren't needed.
+Next you can add the rules as you wish.
+Personally i use the Queue Cleaner with a stalled rule along with a slow download rule:
+
+<img src="../../assets/cleanuparr-stalled-rule.png" width=50% height=50% alt="cleanuparr's stalled rule">
+
+For the Download Cleaner, we enabled the `Label` plugin for Deluge in order to use this specifically.
+You can set a two different rules for the `tv-sonarr` category and `radarr` category and give them each a seed time as you wish, so that after a certain amount of time Cleanuparr will remove the torrent automatically.
