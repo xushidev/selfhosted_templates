@@ -164,3 +164,11 @@ You can add any tag that you like for it, but `flaresolverr` is my go to:
 
 Now you can go under Indexers and add any indexer you want, it will automatically be added to Sonarr and Radarr.
 If you can't add an indexer try to add the FlareSolverr tag to the indexer so that it passes by FlareSolver to bypass Cloudflare's protection.
+
+### Jellyfin
+
+For Jellyfin's configuration (you can access the setup wizard at http://your.server.ip:8096) you can follow the official guide:
+
+https://jellyfin.org/docs/general/post-install/setup-wizard/
+
+Just add the `/media/TV Series`, `/media/Anime`, `/media/Movies` folders for the media library, with the appropriate content types of course (Shows for TV Series and Anime, Movie for Movies)
