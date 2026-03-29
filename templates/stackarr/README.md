@@ -57,7 +57,7 @@ Flaresolverr isn't configured as it doesn't really need configuration.
 - [Deluge](#deluge)
 - [Prowlarr]()
 - [Sonarr](#sonarr)
-- [Radarr]()
+- [Radarr](#radarr)
 - [Jellyfin]()
 - [Seerr]()
 - [Cleanuparr]()
@@ -120,3 +120,13 @@ You will be prompted to enter the details for the details to connect to deluge
 You can leave most of it as it is, except for the `host` section, you need to change that to `deluge`, as that is the hostname we choosed for in the docker compose (also make sure that sonarr and deluge are in the same network).
 
 With that Sonarr is configured, for the indexers they will automatically be added by prowlarr.
+
+NOTE: for convenience go to Settings > General > Security and copy the API Key, keep it somewhere safe. We will need it later on when we setup prowlarr and cleanuparr. 
+
+### Radarr
+
+Radarr's configuration will work the exact same as [Sonarr's](#sonarr), except that you can access Radarr's webui through http://your.server.ip:7878 instead of port 8989.
+
+You will also need to add the `/movies` folder instead of `/tv` and `/anime` in the root folder.
+
+Same note as Sonarr, please copy the API Key and keep it somewhere safe.
