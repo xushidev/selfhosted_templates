@@ -55,9 +55,9 @@ This is a guide on how to use the services for Stackarr.
 Flaresolverr isn't configured as it doesn't really need configuration.
 
 - [Deluge](#deluge)
-- [Prowlarr]()
 - [Sonarr](#sonarr)
 - [Radarr](#radarr)
+- [Prowlarr](#prowlarr)
 - [Jellyfin]()
 - [Seerr]()
 - [Cleanuparr]()
@@ -130,3 +130,37 @@ Radarr's configuration will work the exact same as [Sonarr's](#sonarr), except t
 You will also need to add the `/movies` folder instead of `/tv` and `/anime` in the root folder.
 
 Same note as Sonarr, please copy the API Key and keep it somewhere safe.
+
+### Prowlarr
+
+Prowlarr is your torrent indexer tracker. It automatically adds the indexers to Radarr and Sonarr when you add it on Prowlarr.
+
+When you first log into Prowlarr from http://your.server.ip:9696, you will be greeted with an Authentication Required prompt like below:
+
+<img src="../../assets/prowlarr-first-login.png" width=50% height=50% alt="prowlarr's first login">
+
+Enable the authentication method to `Forms (Login Page)`, and add a username and password.
+Next, you will need to add your apps.
+Go under Settings > Apps and add Sonarr and Radarr.
+
+You will be shown a prompt like this:
+
+![prowlarr's prompt for sonarr configuration](../../assets/prowlarr-apps-setup.png)
+
+You can leave the first 3 fields (Name, Sync Level and Tags) as they are, while you will need to change the next 3 fields (Prowlarr's server, Sonarr's server and API Key).
+
+Instead of `localhost`, use `prowlarr` for the Prowlarr Server field, and `sonarr` for the Sonarr Server field (do not change the port number).
+
+And subsequently add the API Key for the service.
+You will have to repeat the same procedure for each services you want to add (only Sonarr and Radarr in this case).
+
+Since we will be doing the requests in Seerr, Sonarr and Radarr, we won't need to add a download client.
+But instead we will need to add an Indexer so that we can use a proxy to bypass the some limitations.
+
+Under Settings > Indexers, add FlareSolverr, and instead of `localhost` use `flaresolverr`.
+You can add any tag that you like for it, but `flaresolverr` is my go to:
+
+![prowlarr's flaresolverr setup](../../assets/prowlarr-flaresolverr.png)
+
+Now you can go under Indexers and add any indexer you want, it will automatically be added to Sonarr and Radarr.
+If you can't add an indexer try to add the FlareSolverr tag to the indexer so that it passes by FlareSolver to bypass Cloudflare's protection.
