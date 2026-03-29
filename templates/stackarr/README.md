@@ -58,8 +58,8 @@ Flaresolverr isn't configured as it doesn't really need configuration.
 - [Sonarr](#sonarr)
 - [Radarr](#radarr)
 - [Prowlarr](#prowlarr)
-- [Jellyfin]()
-- [Seerr]()
+- [Jellyfin](#jellyfin)
+- [Seerr](#seerr)
 - [Cleanuparr]()
 
 ### Deluge
@@ -172,3 +172,20 @@ For Jellyfin's configuration (you can access the setup wizard at http://your.ser
 https://jellyfin.org/docs/general/post-install/setup-wizard/
 
 Just add the `/media/TV Series`, `/media/Anime`, `/media/Movies` folders for the media library, with the appropriate content types of course (Shows for TV Series and Anime, Movie for Movies)
+
+### Seerr
+
+Seerr will be the main site where you choose the movie you want to download and add to your Jellyfin server.
+You can access your Seerr instance at http://your.server.ip:5055 and you will be greeted with the first login screen.
+
+Choose Jellyfin as your server, add your jellyfin server URL (http://jellyfin:8096) along with the credentials you gave to Jellyfin, this will enable you to access Seerr with your Jellyfin credentials.
+
+For the next few sections you can follow the official guide for Seerr: https://docs.seerr.dev/category/settings
+
+For the media library, let Seerr scan the library accordingly so that it can automatically know if a certain media is added or not.
+
+Just use `sonarr` and `radarr` for when you need to add your Sonarr and Radarr instance (in hostname / IP address) so that it is routed through the Docker network's internal DNS instead of the server's IP address:
+
+![seer's example with radarr](../../assets/seerr-radarr-example.png)
+
+Once you have finished the setup, you will be able to use Seerr to request any movie or anime or tv serie you can find on there and send it to Sonarr or Radarr for request.
