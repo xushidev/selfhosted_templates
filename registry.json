@@ -52,9 +52,9 @@
         },
         {
             "id": "forgejo",
-            "name": "Forgejo",
+            "name": "Forgejo with runner",
             "description": "Forgejo is a self-hosted lightweight software forge. Easy to install and low maintenance, it just does the job.",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "author": "Xushidev",
             "compose_url": "https://raw.githubusercontent.com/xushidev/selfhosted_templates/refs/heads/main/templates/forgejo/docker-compose.yaml",
             "env_url": "https://raw.githubusercontent.com/xushidev/selfhosted_templates/refs/heads/main/templates/forgejo/.env.example",

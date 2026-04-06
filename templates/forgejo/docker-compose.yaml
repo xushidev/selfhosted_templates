@@ -1,18 +1,55 @@
 services:
-  forgejo:
-    container_name: forgejo
+  server:
+    container_name: forgejo-server
     env_file: .env
     hostname: forgejo
-    image: codeberg.org/forgejo/forgejo:13
-    network_mode: bridge
+    image: codeberg.org/forgejo/forgejo:14
     ports:
       - 3000:3000
       - 222:22
     restart: always
     volumes:
-      - ./data:/data
-      - /etc/timezone:/etc/timezone
-      - /etc/localtime:/etc/localtime
+      - ./app:/data
+    networks: 
+      - forgejo_network
+
+  dind:
+    mem_limit: 2g
+    cpus: 1.5
+    image: data.forgejo.org/oci/docker:dind
+    container_name: forgejo-dind
+    hostname: docker-in-docker
+    privileged: true
+    command: ["dockerd", "-H", "tcp://0.0.0.0:2375", "--tls=false"]
+    restart: unless-stopped
+    networks: 
+      - forgejo_network
+
+  runner:
+    mem_limit: 1g
+    cpus: 0.5
+    image: data.forgejo.org/forgejo/runner:11
+    container_name: forgejo-runner
+    depends_on:
+      dind:
+        condition: service_started
+    environment:
+      DOCKER_HOST: tcp://docker-in-docker:2375
+    user: "1001:1001"
+    volumes:
+      - ./runner:/data
+    restart: unless-stopped
+    # Please check the documentation for how to configure the runner:
+    # https://github.com/xushidev/selfhosted_templates/blob/main/templates/forgejo
+    command: ["/bin/sh", "-c", "while : ; do sleep 1 ; done ;"]
+    # command: ["/bin/sh", "-c", "sleep 5; forgejo-runner daemon --config /data/config.yml"]
+    networks: 
+      - forgejo_network
 
 x-arcane:
   icon: https://cdn.jsdelivr.net/gh/selfhst/icons@main/svg/forgejo.svg
+
+networks:
+  forgejo_network:
+    name: forgejo_network
+    driver: bridge
